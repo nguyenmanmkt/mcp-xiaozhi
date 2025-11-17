@@ -1,0 +1,18 @@
+[Unit]
+Description=Xiaozhi Proxy for Invidious API
+After=network.target
+
+[Service]
+User=admin
+Group=admin
+WorkingDirectory=/home/admin/mcp-server-xiaozhi/xiaozhi-proxy-invidious/
+ExecStart=/home/admin/.nvm/versions/node/v18.20.8/bin/npm start
+Restart=always
+RestartSec=5
+Environment=INVIDIOUS_BASE=https://invidious.thanhtan.net
+Environment=PORT=5006
+Environment=NODE_ENV=production
+Environment=PATH=/home/admin/.nvm/versions/node/v18.20.8/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=multi-user.target

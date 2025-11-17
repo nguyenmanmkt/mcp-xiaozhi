@@ -1,13 +1,23 @@
 services:
-  mcp-base:
-    build: .
-    container_name: mcp-base
+  fastmcp:
+    build: ./fastmcp
+    container_name: fastmcp
     command: python mcp_pipe.py
     env_file:
       - .env          
     volumes:
-      - ./mcp_config.json:/app/mcp_config.json
-      - ./calculator.py:/app/calculator.py
-      - ./perplexity.py:/app/perplexity.py
-      - ./gemini_summary.py:/app/gemini_summary.py
+      - ./fastmcp/mcp_config.json:/app/mcp_config.json
+      - ./fastmcp/calculator.py:/app/calculator.py
+      - ./fastmcp/perplexity.py:/app/perplexity.py
+      - ./fastmcp/gemini_summary.py:/app/gemini_summary.py
+      - ./fastmcp/invidious_mcp.py:/app/invidious_mcp.py
+    restart: unless-stopped
+  xiaozhi-proxy-invidious:
+    build: ./xiaozhi-proxy-invidious  
+    container_name: xiaozhi-proxy-invidious
+    environment:
+      - NODE_ENV=production
+      - INVIDIOUS_PROXY=http://xiaozhi-proxy-invidious:5006
+    ports:
+      - "5006:5006" 
     restart: unless-stopped

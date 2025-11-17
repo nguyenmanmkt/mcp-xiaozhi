@@ -1,0 +1,38 @@
+{
+  "name": "xiaozhi-proxy-invidious",
+  "version": "1.0.0",
+  "description": "Xiaozhi Proxy for Invidious API — serves as a lightweight media bridge for ESP32 and MCP servers.",
+  "type": "module",
+  "main": "xiaozhi-proxy-invidious.js",
+  "scripts": {
+    "start": "node xiaozhi-proxy-invidious.js",
+    "dev": "NODE_ENV=development nodemon xiaozhi-proxy-invidious.js"
+  },
+  "keywords": [
+    "xiaozhi",
+    "proxy",
+    "invidious",
+    "youtube",
+    "mcp",
+    "esp32",
+    "audio",
+    "api",
+    "stream"
+  ],
+  "author": "Tran Thanh Tan",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "lru-cache": "^10.2.0",
+    "morgan": "^1.10.0",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
